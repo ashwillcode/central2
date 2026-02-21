@@ -1,0 +1,19 @@
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-layout__content {
+  flex: 1;
+  margin-left: 72px;
+  background: #fff;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.app-layout__content .page--dashboard {
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

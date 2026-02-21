@@ -1,0 +1,294 @@
+/* Dashboard = player window: content | subject tabs | chat */
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  margin: -2rem;
+  background: #fff;
+}
+
+.dashboard__content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: rgba(127, 149, 209, 0.06);
+  border: 1px solid rgba(127, 149, 209, 0.2);
+  border-right: none;
+}
+
+/* Content uses same color as the *selected* tab (hover/active state) */
+.dashboard__content--steel {
+  background: color-mix(in srgb, var(--color-steel) 78%, white);
+  border-color: rgba(127, 149, 209, 0.35);
+}
+.dashboard__content--olive {
+  background: color-mix(in srgb, var(--color-olive) 68%, white);
+  border-color: rgba(172, 193, 150, 0.4);
+}
+.dashboard__content--blush {
+  background: color-mix(in srgb, var(--color-blush) 65%, white);
+  border-color: rgba(255, 166, 158, 0.35);
+}
+.dashboard__content--grape {
+  background: color-mix(in srgb, var(--color-grape) 62%, white);
+  border-color: rgba(73, 71, 91, 0.35);
+}
+
+.dashboard__content-inner {
+  flex: 1;
+  padding: 1.5rem;
+  overflow: auto;
+}
+
+.dashboard__placeholder {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+  max-width: 40ch;
+}
+
+.dashboard__placeholder--muted {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+/* Subject tabs – narrow vertical strip, one color per subject */
+.dashboard__subject-tabs {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 56px;
+  padding: 24px 6px 24px 0;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: stretch;
+  background: #fff;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.dashboard__subject-tabs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+}
+
+.dashboard__subject-tabs-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.dashboard__subject-tabs-recommended {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 56px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-coffee);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.dashboard__subject-tabs-recommended:hover,
+.dashboard__subject-tabs-recommended:focus {
+  background: transparent;
+  outline: none;
+}
+.dashboard__subject-tabs-recommended-icon {
+  display: block;
+  transition: transform 0.25s ease;
+}
+.dashboard__subject-tabs-recommended:hover .dashboard__subject-tabs-recommended-icon {
+  transform: scale(1.2) rotate(12deg);
+}
+
+.dashboard__subject-tabs-chat {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 56px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-coffee);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.dashboard__subject-tabs-chat:hover,
+.dashboard__subject-tabs-chat:focus {
+  background: transparent;
+  outline: none;
+}
+.dashboard__subject-tabs-chat-icon {
+  display: block;
+  transition: transform 0.25s ease;
+}
+.dashboard__subject-tabs-chat:hover .dashboard__subject-tabs-chat-icon {
+  transform: scale(1.2) rotate(12deg);
+}
+
+.dashboard__subject-tab {
+  flex-shrink: 0;
+  height: 150px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  background: rgba(127, 149, 209, 0.12);
+  color: var(--color-coffee);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(0deg);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.dashboard__subject-tab-label {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.dashboard__subject-tab:focus {
+  outline: none;
+}
+.dashboard__subject-tab:hover {
+  background: rgba(127, 149, 209, 0.18);
+}
+
+/* Subject tab colors – slightly lighter than full brand */
+.dashboard__subject-tab--steel {
+  background: color-mix(in srgb, var(--color-steel) 88%, white);
+  color: var(--color-coffee);
+}
+.dashboard__subject-tab--steel:hover,
+.dashboard__subject-tab--steel.dashboard__subject-tab--active {
+  background: color-mix(in srgb, var(--color-steel) 78%, white);
+  color: var(--color-coffee);
+}
+
+.dashboard__subject-tab--olive {
+  background: color-mix(in srgb, var(--color-olive) 78%, white);
+  color: var(--color-coffee);
+}
+.dashboard__subject-tab--olive:hover,
+.dashboard__subject-tab--olive.dashboard__subject-tab--active {
+  background: color-mix(in srgb, var(--color-olive) 68%, white);
+  color: var(--color-coffee);
+}
+
+.dashboard__subject-tab--blush {
+  background: color-mix(in srgb, var(--color-blush) 75%, white);
+  color: var(--color-coffee);
+}
+.dashboard__subject-tab--blush:hover,
+.dashboard__subject-tab--blush.dashboard__subject-tab--active {
+  background: color-mix(in srgb, var(--color-blush) 65%, white);
+  color: var(--color-coffee);
+}
+
+.dashboard__subject-tab--grape {
+  background: color-mix(in srgb, var(--color-grape) 72%, white);
+  color: var(--color-coffee);
+}
+.dashboard__subject-tab--grape:hover,
+.dashboard__subject-tab--grape.dashboard__subject-tab--active {
+  background: color-mix(in srgb, var(--color-grape) 62%, white);
+  color: var(--color-coffee);
+}
+
+/* Single panel slot: same width whether recommended or chat is open (overlay, no squish) */
+.dashboard__panel-slot {
+  position: relative;
+  flex-shrink: 0;
+  width: 0;
+  overflow: hidden;
+  transition: width 0.2s ease;
+}
+.dashboard__panel-slot--open {
+  width: 320px;
+  min-width: 320px;
+}
+
+.dashboard__panel-slot .dashboard__recommended,
+.dashboard__panel-slot .dashboard__chat {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-left: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: opacity 0.2s ease;
+}
+.dashboard__panel--hidden {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.dashboard__panel--visible {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.dashboard__recommended-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  overflow: auto;
+}
+
+.dashboard__recommended-title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-coffee);
+}
+
+.dashboard__recommended-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.dashboard__recommended-section-title {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.dashboard__chat-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  overflow: auto;
+}
+
+.dashboard__chat-title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-coffee);
+}
