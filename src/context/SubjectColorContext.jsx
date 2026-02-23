@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useMemo } from 'react'
+import { createContext, useContext, useState, useMemo, useCallback } from 'react'
 
 const SUBJECT_COLORS = {
   math: 'steel',
@@ -9,10 +9,27 @@ const SUBJECT_COLORS = {
 
 const SubjectColorContext = createContext(null)
 
+const DEFAULT_SUBJECT_ID = 'math'
+const STORAGE_KEY_SUBJECT = 'central2-player-subject'
+
+function getStoredSubject() {
+  try {
+    const v = localStorage.getItem(STORAGE_KEY_SUBJECT)
+    if (v && SUBJECT_COLORS[v]) return v
+  } catch {}
+  return DEFAULT_SUBJECT_ID
+}
+
 export function SubjectColorProvider({ children }) {
-  const [dashboardSubjectId, setDashboardSubjectId] = useState(null)
+  const [dashboardSubjectId, setState] = useState(getStoredSubject)
+  const setDashboardSubjectId = useCallback((id) => {
+    setState(id)
+    try {
+      if (id && SUBJECT_COLORS[id]) localStorage.setItem(STORAGE_KEY_SUBJECT, id)
+    } catch {}
+  }, [])
   const subjectColor = useMemo(
-    () => (dashboardSubjectId ? SUBJECT_COLORS[dashboardSubjectId] ?? null : null),
+    () => SUBJECT_COLORS[dashboardSubjectId] ?? SUBJECT_COLORS[DEFAULT_SUBJECT_ID],
     [dashboardSubjectId]
   )
   const value = useMemo(
@@ -21,7 +38,7 @@ export function SubjectColorProvider({ children }) {
       dashboardSubjectId,
       setDashboardSubjectId,
     }),
-    [subjectColor, dashboardSubjectId]
+    [subjectColor, dashboardSubjectId, setDashboardSubjectId]
   )
   return (
     <SubjectColorContext.Provider value={value}>

@@ -17,6 +17,7 @@
   --color-link-hover: var(--color-coffee);
   --color-accent: var(--color-blush);
   --color-border: rgba(127, 149, 209, 0.3);
+  --color-cream: #faf6f0;
 
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

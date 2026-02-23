@@ -398,7 +398,7 @@ function LeftNav() {
       <div className="left-nav__middle">
         <Link
           to="/"
-          className={`left-nav__item ${isActive('/') ? 'left-nav__item--active' : ''} ${isActive('/') && subjectColor ? `left-nav__item--active--${subjectColor}` : ''}`}
+          className={`left-nav__item ${isActive('/') ? 'left-nav__item--active' : ''} ${isActive('/') ? `left-nav__item--active--${subjectColor || 'steel'}` : ''}`}
           aria-label="Home - Dashboard"
         >
           {icons.home}
